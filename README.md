@@ -1,6 +1,6 @@
 # Testcases
 
-**Overview**  
+## **Overview**  
 Test cases are essential components of the software development lifecycle that verify the functionality of code. They help ensure that the code behaves as expected in various scenarios, including edge cases and error conditions. By writing and running test cases, you can catch bugs early, ensure code quality, and facilitate future code changes with confidence.
 
 A test case is a set of conditions or variables used to determine if a software application or system behaves as expected. It typically includes the following components:
@@ -73,7 +73,7 @@ A test case is a set of conditions or variables used to determine if a software 
 | **Aspect**            | **Test Case**                                    | **Test Scenario**                               |
 |-----------------------|--------------------------------------------------|-------------------------------------------------|
 | **Definition**        | Specific set of steps and expected results      | High-level description of functionality          |
-| **Focus**             | Tests a single aspect or condition              | Encompasses multiple related test cases         |
+| **Focus**             | Tests a single aspect or condition              | Encompasses multiple related test cases          |
 | **Identification**    | Has a unique identifier (Test Case ID)          | Often identified by a descriptive title          |
 | **Purpose**           | Detailed verification of a small unit           | Provides context for a group of test cases      |
 | **Granularity**       | Very specific and focused                       | More general and covers broader functionality   |
@@ -85,9 +85,100 @@ A test case is a set of conditions or variables used to determine if a software 
 
 
 By understanding these components and distinctions, you can effectively design and manage your test cases and scenarios, ensuring thorough and efficient software testing.
+<br>
 
+## What is pytest?
 
-**Test Cases Explanation**
+**pytest** is a testing framework for Python that makes it easy to write simple and scalable test cases. It is highly popular due to its simplicity, powerful features, and flexibility. Pytest supports fixtures, parameterized testing, and various plugins to extend its functionality.
+<br>
+
+## Why Do we use pytest?
+
+1. **Simple Syntax**: Pytest allows writing tests using straightforward syntax. Test functions are just normal Python functions with `assert` statements, which makes it easy to learn and use.
+  
+2. **Powerful Features**: It supports fixtures for setup and teardown, parameterized tests to run the same test with different data, and has built-in support for running tests in parallel.
+
+3. **Comprehensive Reporting**: Pytest provides detailed and user-friendly test reports, including summary and detailed traces of failures.
+
+4. **Flexibility**: It supports a wide range of testing needs, from unit tests to integration tests and beyond. Its extensive plugin system allows for customization and extension.
+
+5. **Compatibility**: Pytest is compatible with other testing frameworks like unittest and nose, which helps in gradually migrating from other frameworks if needed.
+
+6. **Integration**: It integrates well with continuous integration (CI) systems and build tools, providing seamless integration into the development workflow.
+<br>
+
+## How to Install pytest
+
+To get started with pytest, you need to install it. Here’s how you can install pytest using pip, the Python package installer:
+
+1. **Using pip**
+
+   Open a terminal or command prompt and run the following command:
+
+   ```bash
+   pip install pytest
+   ```
+
+2. **Using a requirements file**
+
+   If you’re working on a project with a `requirements.txt` file, you can add `pytest` to this file:
+
+   ```txt
+   pytest
+   ```
+
+   Then, install the dependencies with:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Using Poetry**
+
+   If you're using Poetry for dependency management, you can add pytest to your project with:
+
+   ```bash
+   poetry add --dev pytest
+   ```
+<br>
+
+## Running Tests with pytest
+
+Once you have pytest installed, you can run your tests using the following command:
+
+```bash
+pytest
+```
+
+This command will discover and run all the test functions in the current directory and its subdirectories. Pytest automatically identifies test files (which should be named `test_*.py` or `*_test.py`) and test functions (which should be named `test_*`).
+<br>
+
+## Example of a Basic pytest Test
+
+Here’s a simple example of a test case using pytest:
+
+```python
+def add(a, b):
+    return a + b
+
+def test_add():
+    assert add(1, 2) == 3
+    assert add(-1, 1) == 0
+    assert add(0, 0) == 0
+```
+
+To run this test, save it in a file named `test_example.py` and execute:
+
+```bash
+pytest test_example.py
+```
+
+Pytest will run the `test_add` function and check the assertions, providing a summary of the test results.
+
+Pytest is a powerful and user-friendly framework for writing and running tests in Python. Its simplicity, extensive feature set, and flexibility make it a popular choice for developers looking to ensure the quality and reliability of their code.
+<br>
+
+## **Test Cases Explanation**
 
 Below is a detailed explanation of the test cases implemented using `pytest` and `FlaskClient` for a Flask application that handles incoming messages and saves chat history:
 
@@ -279,9 +370,7 @@ Below is a detailed explanation of the test cases implemented using `pytest` and
        }
        response = client.post('/webhook', json=mock_data)
        assert response.status_code == 200
-       mock_process_incoming_message.assert_called_once
-
-_with(mock_data)
+       mock_process_incoming_message.assert_called_once_with(mock_data)
    ```
 
 9. **`test_webhook_post_unsupported_content_type`**
