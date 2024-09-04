@@ -3,28 +3,29 @@
 ## Table of Contents
 
 1. [**Overview**](#overview)
-  - [What is a Test Case?](#what-is-a-test-case?)
-  - [Components of a Test Case](#Components-of-a-Test-Case)
+    - [What is a Test Case?](#what-is-a-test-case?)
+    - [Components of a Test Case](#Components-of-a-Test-Case)
+      
 
-3. [**Why Test Cases Are Needed**](#why-test-cases-are-needed)
+2. [**Why Test Cases Are Needed**](#why-test-cases-are-needed)
 
-4. [**Detailed Reasons for Test Cases**](#detailed-reasons-for-test-cases)
+3. [**Detailed Reasons for Test Cases**](#detailed-reasons-for-test-cases)
   
-5. [**Test Case Components**](#test-case-components)
+4. [**Test Case Components**](#test-case-components)
    
-6. [**Test Case vs. Test Scenario**](#test-case-vs-test-scenario)
+5. [**Test Case vs. Test Scenario**](#test-case-vs-test-scenario)
 
-7. [**What is pytest?**](#what-is-pytest)
+6. [**What is pytest?**](#what-is-pytest)
 
-8. [**Why Do We Use pytest?**](#why-do-we-use-pytest)
+7. [**Why Do We Use pytest?**](#why-do-we-use-pytest)
    
-9. [**How to Install pytest**](#how-to-install-pytest)
+8. [**How to Install pytest**](#how-to-install-pytest)
 
-10. [**Running Tests with pytest**](#running-tests-with-pytest)
+9. [**Running Tests with pytest**](#running-tests-with-pytest)
 
-11. [**Example of a Basic pytest Test**](#example-of-a-basic-pytest-test)
+10. [**Example of a Basic pytest Test**](#example-of-a-basic-pytest-test)
 
-12. [**Test Cases Explanation**](#test-cases-explanation)
+11. [**Test Cases Explanation**](#test-cases-explanation)
     - [test_verify_webhook](#test_verify_webhook)
     - [test_verify_webhook_invalid_token](#test_verify_webhook_invalid_token)
     - [test_webhook_post](#test_webhook_post)
@@ -35,6 +36,8 @@
     - [test_webhook_post_with_additional_unrelated_fields](#test_webhook_post_with_additional_unrelated_fields)
     - [test_webhook_post_unsupported_content_type](#test_webhook_post_unsupported_content_type)
 
+12. [**conclusion**](#Conclusion)
+<br>
 
 ## **Overview**  
 Test cases are essential components of the software development lifecycle that verify the functionality of code. They help ensure that the code behaves as expected in various scenarios, including edge cases and error conditions. By writing and running test cases, you can catch bugs early, ensure code quality, and facilitate future code changes with confidence.
@@ -234,7 +237,8 @@ Below is a detailed explanation of the test cases implemented using `pytest` and
        assert response.status_code == 200
        assert response.data.decode() == 'test_challenge'
    ```
-
+  <br>
+  
 2. **`test_verify_webhook_invalid_token`**
    - **Purpose**: Ensure the `/webhook` endpoint returns a `403 Forbidden` status for an invalid verification token.
    - **Details**:
@@ -251,7 +255,8 @@ Below is a detailed explanation of the test cases implemented using `pytest` and
        assert response.status_code == 403
        assert response.data.decode() == 'Verification token mismatch'
    ```
-
+  <br>
+  
 3. **`test_webhook_post`**
    - **Purpose**: Test that the `/webhook` endpoint processes incoming messages correctly.
    - **Details**:
@@ -268,7 +273,8 @@ Below is a detailed explanation of the test cases implemented using `pytest` and
        assert response.status_code == 200
        mock_process_incoming_message.assert_called_once_with(mock_data)
    ```
-
+  <br>
+  
 4. **`test_save_chat_history_insert`**
    - **Purpose**: Verify that `save_chat_history` correctly inserts a new chat record into the database.
    - **Details**:
@@ -296,7 +302,8 @@ Below is a detailed explanation of the test cases implemented using `pytest` and
        assert call_args['history'][current_date][0]['user'] == user_message
        assert call_args['history'][current_date][0]['bot'] == bot_message
    ```
-
+  <br>
+  
 5. **`test_save_chat_history_update`**
    - **Purpose**: Verify that `save_chat_history` correctly updates an existing chat record.
    - **Details**:
@@ -328,6 +335,7 @@ Below is a detailed explanation of the test cases implemented using `pytest` and
        assert call_args[1]['user'] == user_message
        assert call_args[1]['bot'] == bot_message
    ```
+   <br>
 
 6. **`test_webhook_post_invalid_json`**
    - **Purpose**: Verify that the `/webhook` endpoint returns a `400 Bad Request` for invalid JSON data.
@@ -343,7 +351,8 @@ Below is a detailed explanation of the test cases implemented using `pytest` and
        assert response.status_code == 400
        mock_process_incoming_message.assert_not_called()
    ```
-
+  <br>
+  
 7. **`test_save_chat_history_complex_nested_structure`**
    - **Purpose**: Verify that `save_chat_history` handles complex nested chat history structures.
    - **Details**:
@@ -383,6 +392,7 @@ Below is a detailed explanation of the test cases implemented using `pytest` and
        assert call_args[2]['user'] == user_message
        assert call_args[2]['bot'] == bot_message
    ```
+   <br>
 
 8. **`test_webhook_post_with_additional_unrelated_fields`**
    - **Purpose**: Verify that the `/webhook` endpoint processes valid messages correctly even when additional unrelated fields are present.
@@ -408,7 +418,8 @@ Below is a detailed explanation of the test cases implemented using `pytest` and
        assert response.status_code == 200
        mock_process_incoming_message.assert_called_once_with(mock_data)
    ```
-
+  <br>
+  
 9. **`test_webhook_post_unsupported_content_type`**
    - **Purpose**: Verify that the `/webhook` endpoint returns a `415 Unsupported Media Type` status for unsupported content types.
    - **Details**:
@@ -423,6 +434,7 @@ Below is a detailed explanation of the test cases implemented using `pytest` and
        assert response.status_code == 415
        mock_process_incoming_message.assert_not_called()
    ```
-
-**Conclusion**  
+  <br>
+  
+# **Conclusion**  
 These test cases cover various scenarios for verifying the behavior of a Flask application handling webhooks and saving chat history. They test both successful operations and edge cases, such as invalid input or unsupported content types, ensuring the robustness and reliability of the application.
