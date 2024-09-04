@@ -114,6 +114,7 @@ A test case is a set of conditions or variables used to determine if a software 
 By understanding these components and distinctions, you can effectively design and manage your test cases and scenarios, ensuring thorough and efficient software testing.
 <br>
 
+
 ## What is pytest?
 
 **pytest** is a testing framework for Python that makes it easy to write simple and scalable test cases. It is highly popular due to its simplicity, powerful features, and flexibility. Pytest supports fixtures, parameterized testing, and various plugins to extend its functionality.
@@ -133,6 +134,7 @@ By understanding these components and distinctions, you can effectively design a
 
 6. **Integration**: It integrates well with continuous integration (CI) systems and build tools, providing seamless integration into the development workflow.
 <br>
+
 
 ## How to Install pytest
 
@@ -169,6 +171,7 @@ To get started with pytest, you need to install it. Here’s how you can install
    ```
 <br>
 
+
 ## Running Tests with pytest
 
 Once you have pytest installed, you can run your tests using the following command:
@@ -179,6 +182,7 @@ pytest
 
 This command will discover and run all the test functions in the current directory and its subdirectories. Pytest automatically identifies test files (which should be named `test_*.py` or `*_test.py`) and test functions (which should be named `test_*`).
 <br>
+
 
 ## Example of a Basic pytest Test
 
@@ -204,6 +208,7 @@ Pytest will run the `test_add` function and check the assertions, providing a su
 
 Pytest is a powerful and user-friendly framework for writing and running tests in Python. Its simplicity, extensive feature set, and flexibility make it a popular choice for developers looking to ensure the quality and reliability of their code.
 <br>
+
 
 ## **Test Cases Explanation**
 
