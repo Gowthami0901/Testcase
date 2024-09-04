@@ -23,15 +23,6 @@
 10. [**Example of a Basic pytest Test**](#example-of-a-basic-pytest-test)
 
 11. [**Test Cases Explanation**](#test-cases-explanation)
-    - [test_verify_webhook](#'test_verify_webhook')
-    - [test_verify_webhook_invalid_token](#test_verify_webhook_invalid_token)
-    - [test_webhook_post](#test_webhook_post)
-    - [test_save_chat_history_insert](#test_save_chat_history_insert)
-    - [test_save_chat_history_update](#test_save_chat_history_update)
-    - [test_webhook_post_invalid_json](#test_webhook_post_invalid_json)
-    - [test_save_chat_history_complex_nested_structure](#test_save_chat_history_complex_nested_structure)
-    - [test_webhook_post_with_additional_unrelated_fields](#test_webhook_post_with_additional_unrelated_fields)
-    - [test_webhook_post_unsupported_content_type](#test_webhook_post_unsupported_content_type)
 
 12. [**conclusion**](#Conclusion)
 <br>
