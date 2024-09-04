@@ -3,9 +3,6 @@
 ## Table of Contents
 
 1. [**Overview**](#overview)
-    - [What is a Test Case?](#what-is-a-test-case?)
-    - [Components of a Test Case](#Components-of-a-Test-Case)
-      
 
 2. [**Why Test Cases Are Needed**](#why-test-cases-are-needed)
 
