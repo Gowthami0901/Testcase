@@ -206,9 +206,10 @@ pytest test_example.py
 
 Pytest will run the `test_add` function and check the assertions, providing a summary of the test results.
 
+
 Pytest is a powerful and user-friendly framework for writing and running tests in Python. Its simplicity, extensive feature set, and flexibility make it a popular choice for developers looking to ensure the quality and reliability of their code.
 <br>
-
+<br>
 
 ## **Test Cases Explanation**
 
